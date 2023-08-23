@@ -11,10 +11,13 @@ export const getTransactions = createAsyncThunk(
 );
 
 /** <!-- Post transactions --> */
-export const addTransactions = async (data) => {
-  const res = await axios.get("/transactions", data);
-  return res.data;
-};
+export const addTransactions = createAsyncThunk(
+  "transactions/addTransactions",
+  async (data) => {
+    const res = await axios.post("/transactions", data);
+    return res.data;
+  }
+);
 
 /** <!-- Put transactions --> */
 export const updateTransactions = async (id, updatedData) => {
@@ -23,7 +26,10 @@ export const updateTransactions = async (id, updatedData) => {
 };
 
 /** <!-- Delete transactions --> */
-export const deleteTransactions = async (id) => {
-  const res = await axios.delete(`/transactions/${id}`);
-  return res.data;
-};
+export const deleteTransactions = createAsyncThunk(
+  "transactions/deleteTransactions",
+  async (id) => {
+    const res = await axios.delete(`/transactions/${id}`);
+    return res.data;
+  }
+);
