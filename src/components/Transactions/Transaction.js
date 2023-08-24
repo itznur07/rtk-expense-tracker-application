@@ -7,9 +7,7 @@ export default function Transaction({ transaction }) {
   const { id } = transaction;
   const dispatch = useDispatch();
 
-  
-
-  const handleDelete = (id) => {
+  const handleDelete = () => {
     dispatch(deleteTransactions(id));
   };
 
@@ -21,13 +19,8 @@ export default function Transaction({ transaction }) {
         <button className='link'>
           <img alt='Edit' className='icon' src={editImage} />
         </button>
-        <button className='link'>
-          <img
-            onClick={() => handleDelete(id)}
-            alt='Delete'
-            className='icon'
-            src={deleteImage}
-          />
+        <button onClick={handleDelete} className='link'>
+          <img alt='Delete' className='icon' src={deleteImage} />
         </button>
       </div>
     </li>
